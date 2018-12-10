@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Tecnofit.Views.ExtratoViewPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary" Icon="addButton.png" Command="{Binding AddTransacaoCommand}" Priority="0" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="0">
+        <Grid HorizontalOptions="FillAndExpand" HeightRequest="165" BackgroundColor="#4488ed" RowSpacing="0">
+            <Grid Margin="20,30,0,0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <forms:CachedImage HeightRequest="20" WidthRequest="20" Source="coin.png"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="Extrato" FontSize="Large" TextColor="White"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="Movitações no dia" TextColor="White"/>
+            </Grid>
+        </Grid>
+        <Frame HasShadow="False" HeightRequest="60" BackgroundColor="#e6e6e6" Padding="5">
+            <DatePicker Date="{Binding DataSelecionada}" VerticalOptions="Center" HorizontalOptions="Start"/>
+        </Frame>
+        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <Grid HeightRequest="40" BackgroundColor="#e6e6e6" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <forms:CachedImage HeightRequest="20" WidthRequest="20" Source="right.png"/>
+            <Label Grid.Column="1" Text="Total de entradas" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label  Grid.Column="2" Text="{Binding TotalEntradas}" FontAttributes="Bold" VerticalOptions="Center"/>
+        </Grid>
+        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <Grid HeightRequest="40" BackgroundColor="#e6e6e6" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <forms:CachedImage HeightRequest="20" WidthRequest="20" Source="left.png"/>
+            <Label Grid.Column="1" Text="Total de saídas" FontAttributes="Bold"/>
+            <Label  Grid.Column="2" Text="{Binding TotalSaidas}" FontAttributes="Bold" VerticalOptions="Center"/>
+        </Grid>
+        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <ListView VerticalOptions="FillAndExpand" RowHeight="80" HorizontalOptions="FillAndExpand" ItemsSource="{Binding ListaContas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <forms:CachedImage Margin="10" HeightRequest="80" Grid.RowSpan="2" WidthRequest="40" Source="{Binding ImageList}"/>
+                            <Label Grid.Column="1" Text="{Binding title}" HorizontalOptions="FillAndExpand" MaxLines="1" VerticalOptions="End"  FontAttributes="Bold" TextColor="#202a2b"/>
+                            <Label Grid.Row="1" Grid.Column="1" MaxLines="1"  Text="{Binding description}"  VerticalOptions="Start"  TextColor="#202a2b"/>
+                            <Label  Grid.Column="2" Text="{Binding netValue}" FontAttributes="Bold" TextColor="#202a2b" HorizontalOptions="End" VerticalOptions="End" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding accountCategory}" MaxLines="1"  VerticalOptions="Start" HorizontalOptions="End" TextColor="#202a2b"/>
+                            <forms:CachedImage Grid.Column="4" Grid.RowSpan="2" Margin="10" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" HorizontalOptions="End" Source="arrow.png"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

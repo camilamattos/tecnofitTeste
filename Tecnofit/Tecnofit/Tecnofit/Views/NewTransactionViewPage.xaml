@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tecnofit.Views.NewTransactionViewPage"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <ScrollView>
+        <StackLayout Spacing="0">
+            <Grid HorizontalOptions="FillAndExpand" HeightRequest="105" BackgroundColor="#4488ed" RowSpacing="0">
+                <Grid Margin="20,30,0,0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <forms:CachedImage HeightRequest="20" WidthRequest="20" Source="coinChange.png"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Nova transação" FontSize="Large" TextColor="White"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="CONTA A RECEBER" FontSize="12" TextColor="White"/>
+                </Grid>
+            </Grid>
+            <StackLayout Orientation="Vertical" Margin="25">
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Entry Placeholder="Nome da transação" Text="{Binding NomeTransacao}" PlaceholderColor="Gray" TextColor="Black" HeightRequest="60" BackgroundColor="Transparent"/>
+                </Frame>
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Picker Title="Conta bancária" ItemsSource="{Binding ContaBancaria}" SelectedItem="{Binding ContaBancariaSelected}" BackgroundColor="Transparent" TextColor="Black"/>
+                </Frame>
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Picker Title="Centro de responsabilidade" ItemsSource="{Binding CentroResponsabilidade}" SelectedItem="{Binding CentroResponsabilidadeSelected}" BackgroundColor="Transparent" TextColor="Black"/>
+                </Frame>
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Picker Title="Categoria" ItemsSource="{Binding Categoria}" SelectedItem="{Binding CategoriaSelected}" BackgroundColor="Transparent" TextColor="Black"/>
+                </Frame>
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Picker Title="Forma de cobrança" ItemsSource="{Binding FormaCobranca}" SelectedItem="{Binding FormaCobrancaSelected}" BackgroundColor="Transparent" TextColor="Black"/>
+                </Frame>
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Entry Placeholder="Data de vencimento" Text="{Binding DataVencimento}" PlaceholderColor="Gray" TextColor="Black" BackgroundColor="Transparent"/>
+                </Frame>
+                <Grid Margin="0,0,0,10" HeightRequest="60">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <Frame Grid.Column="0" Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,5,0">
+                        <Entry Placeholder="Desconto" Text="{Binding Desconto}" PlaceholderColor="Gray" TextColor="Black" HeightRequest="60" BackgroundColor="Transparent"/>
+                    </Frame>
+                    <Frame Grid.Column="1" Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0">
+                        <Entry Placeholder="Multa" Text="{Binding Multa}" PlaceholderColor="Gray" TextColor="Black" HeightRequest="60" BackgroundColor="Transparent"/>
+                    </Frame>
+                </Grid>
+                <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                    <Entry Placeholder="Saldo final" Text="{Binding SaldoFinal}" PlaceholderColor="Gray" TextColor="Black" BackgroundColor="Transparent"/>
+                </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Valor pago? " HorizontalTextAlignment="End" TextColor="Gray"/>
+                    <Switch IsToggled="{Binding IsValorPago}" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsValorPago}" Orientation="Vertical">
+                    <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                        <Entry Placeholder="Data de pagamento" Text="{Binding DataPagento}" PlaceholderColor="Gray" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+                    <Frame Padding="5" BackgroundColor="Transparent" BorderColor="#4488ed" HeightRequest="60" CornerRadius="5" Margin="0,0,0,10">
+                        <Entry Placeholder="Valor pago" Text="{Binding ValorPago}" PlaceholderColor="Gray" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+                </StackLayout>
+                <Button BackgroundColor="DarkGray" Command="{Binding CriarTransacaoCommand}" CornerRadius="5" Text="CRIAR TRANSAÇÃO" TextColor="White" HeightRequest="50"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
